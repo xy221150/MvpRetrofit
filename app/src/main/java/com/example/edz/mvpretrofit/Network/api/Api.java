@@ -1,12 +1,12 @@
 package com.example.edz.mvpretrofit.Network.api;
 
-import java.util.Map;
+import com.example.edz.mvpretrofit.Bean.TestBean;
 
-import retrofit2.Call;
+import io.reactivex.Observable;
 import retrofit2.http.POST;
-import retrofit2.http.QueryMap;
+import retrofit2.http.Query;
 
 public interface Api {
-    @POST("")
-    Call<Void> post(@QueryMap Map map);
+    @POST("novelSearchApi")
+    Observable<TestBean> post(@Query("name") String name);
 }

@@ -19,6 +19,7 @@ import okhttp3.MultipartBody;
 import okhttp3.OkHttpClient;
 import okhttp3.RequestBody;
 import retrofit2.Retrofit;
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
@@ -51,7 +52,9 @@ public class RetrofitHelper {
                     Gson gson=gsonBuilder.create();
                     GsonConverterFactory gsonConverterFactory=GsonConverterFactory.create(gson);
                     //3.生成Retrofit对象
-                    Retrofit.Builder builder=new Retrofit.Builder().baseUrl(Config.URL_BASE).addConverterFactory(gsonConverterFactory);
+                    Retrofit.Builder builder=new Retrofit.Builder().baseUrl(Config.URL_BASE)
+                            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                            .addConverterFactory(gsonConverterFactory);
                     retroitMachining(OkHttpClientBuilder);
                     mRetrofit= builder.client(OkHttpClientBuilder.build()).build();
                 }

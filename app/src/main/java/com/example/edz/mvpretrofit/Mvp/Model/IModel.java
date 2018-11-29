@@ -6,6 +6,6 @@ import java.util.Map;
 
 public class IModel {
     public interface BaseModel<T>{
-        void loadData(Map<Object, Object> map, RetrofitCallBack<T> callBack);
+        void loadData(String name, RetrofitCallBack<T> callBack);
     }
 }

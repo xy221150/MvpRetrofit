@@ -4,7 +4,7 @@ import java.util.Map;
 
 public class IPresenter {
     public interface BasePrsenter {
-        void loadData(Map<Object, Object> map);
+        void loadData(String name);
 
     }
 }

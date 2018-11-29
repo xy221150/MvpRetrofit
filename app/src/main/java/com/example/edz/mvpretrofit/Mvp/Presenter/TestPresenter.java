@@ -16,7 +16,7 @@ public class TestPresenter extends BasePrsenter<TestView,TestBean> implements Te
     }
 
     @Override
-    public void loadData(Map map) {
-        model.loadData(map,this);
+    public void loadData(String name) {
+        model.loadData(name,this);
     }
 }

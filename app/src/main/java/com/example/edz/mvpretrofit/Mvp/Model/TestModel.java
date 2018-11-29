@@ -5,28 +5,40 @@ import com.example.edz.mvpretrofit.Network.RetrofitCallBack;
 import com.example.edz.mvpretrofit.Network.RetrofitHelper;
 import com.example.edz.mvpretrofit.Network.api.Api;
 
-import java.util.Map;
 
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
+import io.reactivex.Observer;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
+
 
 public class TestModel implements IModel.BaseModel<TestBean> {
     Api api;
-
     @Override
-    public void loadData(Map map, final RetrofitCallBack callBack) {
+    public void loadData(String name, final RetrofitCallBack<TestBean> callBack) {
         api=RetrofitHelper.create(Api.class);
-        api.post(map).enqueue(new Callback<Void>() {
-            @Override
-            public void onResponse(Call<Void> call, Response<Void> response) {
-                callBack.requstSuccess(response.body());
-            }
+        api.post(name)
+                 .subscribeOn(io.reactivex.schedulers.Schedulers.io())
+                 .observeOn(AndroidSchedulers.mainThread())
+                 .subscribe(new Observer<TestBean>() {
+                     @Override
+                     public void onSubscribe(Disposable d) {
 
-            @Override
-            public void onFailure(Call<Void> call, Throwable t) {
-                callBack.requstErorr(t);
-            }
-        });
+                     }
+
+                     @Override
+                     public void onNext(TestBean testBean) {
+                          callBack.requstSuccess(testBean);
+                     }
+
+                     @Override
+                     public void onError(Throwable e) {
+                         callBack.requstErorr(e);
+                     }
+
+                     @Override
+                     public void onComplete() {
+
+                     }
+                 });
     }
 }
