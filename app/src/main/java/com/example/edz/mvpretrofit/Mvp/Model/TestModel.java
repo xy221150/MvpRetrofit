@@ -24,7 +24,7 @@ public class TestModel implements IModel.BaseModel<TestBean> {
                  .subscribe(new Observer<TestBean>() {
                      @Override
                      public void onSubscribe(Disposable d) {
-
+                         callBack.beforeRequest();
                      }
 
                      @Override
@@ -39,7 +39,7 @@ public class TestModel implements IModel.BaseModel<TestBean> {
 
                      @Override
                      public void onComplete() {
-
+                         callBack.requestComplete();
                      }
                  });
     }
