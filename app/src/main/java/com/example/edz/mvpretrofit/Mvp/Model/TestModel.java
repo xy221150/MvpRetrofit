@@ -13,9 +13,11 @@ import io.reactivex.disposables.Disposable;
 
 public class TestModel implements IModel.BaseModel<TestBean> {
     Api api;
+    public TestModel(){
+        api=RetrofitHelper.create(Api.class);
+    }
     @Override
     public void loadData(String name, final RetrofitCallBack<TestBean> callBack) {
-        api=RetrofitHelper.create(Api.class);
         api.post(name)
                  .subscribeOn(io.reactivex.schedulers.Schedulers.io())
                  .observeOn(AndroidSchedulers.mainThread())
