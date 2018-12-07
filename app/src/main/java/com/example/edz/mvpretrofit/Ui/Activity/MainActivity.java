@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity implements TestView {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.loadData("盗墓笔记");
+                presenter.loadData("杭州");
             }
         });
     }
@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity implements TestView {
 
     @Override
     public void loadDataSuccess(TestBean data) {
-        text.setText(data.getData().get(0));
+        text.setText(data.getData().getForecast().get(0).getDate());
     }
 
     @Override

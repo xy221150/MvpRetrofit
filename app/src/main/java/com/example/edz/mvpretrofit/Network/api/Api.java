@@ -7,6 +7,6 @@ import retrofit2.http.POST;
 import retrofit2.http.Query;
 
 public interface Api {
-    @POST("novelSearchApi")
+    @POST("weatherApi")
     Observable<TestBean> post(@Query("name") String name);
 }
