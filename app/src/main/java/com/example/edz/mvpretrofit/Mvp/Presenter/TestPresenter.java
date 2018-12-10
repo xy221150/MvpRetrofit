@@ -7,7 +7,7 @@ import com.example.edz.mvpretrofit.Mvp.View.TestView;
 
 import java.util.Map;
 
-public class TestPresenter extends BasePrsenter<TestView,TestBean> implements TestPresenterlmp{
+public class TestPresenter extends BasePrsenter<TestView,TestBean> implements IPresenter.TestPrsenter {
     TestModel model;
 
     public TestPresenter(TestView baseView) {

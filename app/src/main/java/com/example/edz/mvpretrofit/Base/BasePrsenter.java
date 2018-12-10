@@ -3,6 +3,8 @@ package com.example.edz.mvpretrofit.Base;
 
 import com.example.edz.mvpretrofit.Network.RetrofitCallBack;
 
+
+//V继承BaseView T接口bean
 public class BasePrsenter<V extends BaseView,T>implements RetrofitCallBack<T> {
     BaseView baseView=null;
 
