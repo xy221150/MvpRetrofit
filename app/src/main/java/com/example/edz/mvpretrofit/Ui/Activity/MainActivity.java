@@ -66,6 +66,6 @@ public class MainActivity extends AppCompatActivity implements TestView {
 
     @Override
     public void loadDataError(Throwable throwable) {
-
+        Toast.makeText(this, throwable.getMessage(), Toast.LENGTH_SHORT).show();
     }
 }
