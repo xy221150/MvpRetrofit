@@ -5,13 +5,11 @@ import com.example.edz.mvpretrofit.Bean.TestBean;
 import com.example.edz.mvpretrofit.Mvp.Model.TestModel;
 import com.example.edz.mvpretrofit.Mvp.View.TestView;
 
-import java.util.Map;
-
 public class TestPresenter extends BasePrsenter<TestView,TestBean> implements IPresenter.TestPrsenter {
     TestModel model;
 
-    public TestPresenter(TestView baseView) {
-        super(baseView);
+    public TestPresenter(TestView view) {
+        attrchView(view);
         model=new TestModel();
     }
 

@@ -1,5 +1,7 @@
 package com.example.edz.mvpretrofit.Mvp.Model;
 
+import android.util.Log;
+
 import com.example.edz.mvpretrofit.Bean.TestBean;
 import com.example.edz.mvpretrofit.Network.RetrofitCallBack;
 import com.example.edz.mvpretrofit.Network.RetrofitHelper;
@@ -25,21 +27,25 @@ public class TestModel implements IModel.BaseModel<TestBean> {
                      @Override
                      public void onSubscribe(Disposable d) {
                          callBack.beforeRequest();
+                         Log.d("TAG", "onSubscribe: "+d.toString());
                      }
 
                      @Override
                      public void onNext(TestBean testBean) {
                           callBack.requstSuccess(testBean);
+                         Log.d("TAG", "onNext: "+testBean.getMessage());
                      }
 
                      @Override
                      public void onError(Throwable e) {
                          callBack.requstErorr(e);
+                         Log.d("TAG", "onError: "+e.getMessage());
                      }
 
                      @Override
                      public void onComplete() {
                          callBack.requestComplete();
+                         Log.d("TAG", "onComplete: ");
                      }
                  });
     }

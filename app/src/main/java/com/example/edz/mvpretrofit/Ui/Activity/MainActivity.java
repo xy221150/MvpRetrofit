@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity implements TestView {
 
     @Override
     public void loadDataSuccess(TestBean data) {
-        text.setText(data.getData().getForecast().get(0).getDate());
+        text.setText(data.getResult().get(0).getTitle());
     }
 
     @Override

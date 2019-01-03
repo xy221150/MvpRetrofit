@@ -7,13 +7,13 @@ public class TestBean {
 
     /**
      * code : 200
-     * msg : 成功!
-     * data : {"yesterday":{"date":"6日星期四","high":"高温 10℃","fx":"无持续风向","low":"低温 4℃","fl":"<![CDATA[<3级]]>","type":"阴"},"city":"成都","aqi":"52","forecast":[{"date":"7日星期五","high":"高温 5℃","fengli":"<![CDATA[<3级]]>","low":"低温 2℃","fengxiang":"无持续风向","type":"小雨"},{"date":"8日星期六","high":"高温 4℃","fengli":"<![CDATA[<3级]]>","low":"低温 1℃","fengxiang":"无持续风向","type":"小雨"},{"date":"9日星期天","high":"高温 4℃","fengli":"<![CDATA[<3级]]>","low":"低温 2℃","fengxiang":"无持续风向","type":"多云"},{"date":"10日星期一","high":"高温 7℃","fengli":"<![CDATA[<3级]]>","low":"低温 2℃","fengxiang":"无持续风向","type":"阴"},{"date":"11日星期二","high":"高温 11℃","fengli":"<![CDATA[<3级]]>","low":"低温 3℃","fengxiang":"无持续风向","type":"多云"}],"ganmao":"昼夜温差很大，易发生感冒，请注意适当增减衣服，加强自我防护避免感冒。","wendu":"6"}
+     * message : 成功!
+     * result : [{"title":"古风二首 二","content":"锄禾日当午，汗滴禾下土。|谁知盘中餐，粒粒皆辛苦。","authors":"李绅"}]
      */
 
     private int code;
-    private String msg;
-    private DataBean data;
+    private String message;
+    private List<ResultBean> result;
 
     public int getCode() {
         return code;
@@ -23,217 +23,55 @@ public class TestBean {
         this.code = code;
     }
 
-    public String getMsg() {
-        return msg;
+    public String getMessage() {
+        return message;
     }
 
-    public void setMsg(String msg) {
-        this.msg = msg;
+    public void setMessage(String message) {
+        this.message = message;
     }
 
-    public DataBean getData() {
-        return data;
+    public List<ResultBean> getResult() {
+        return result;
     }
 
-    public void setData(DataBean data) {
-        this.data = data;
+    public void setResult(List<ResultBean> result) {
+        this.result = result;
     }
 
-    public static class DataBean {
+    public static class ResultBean {
         /**
-         * yesterday : {"date":"6日星期四","high":"高温 10℃","fx":"无持续风向","low":"低温 4℃","fl":"<![CDATA[<3级]]>","type":"阴"}
-         * city : 成都
-         * aqi : 52
-         * forecast : [{"date":"7日星期五","high":"高温 5℃","fengli":"<![CDATA[<3级]]>","low":"低温 2℃","fengxiang":"无持续风向","type":"小雨"},{"date":"8日星期六","high":"高温 4℃","fengli":"<![CDATA[<3级]]>","low":"低温 1℃","fengxiang":"无持续风向","type":"小雨"},{"date":"9日星期天","high":"高温 4℃","fengli":"<![CDATA[<3级]]>","low":"低温 2℃","fengxiang":"无持续风向","type":"多云"},{"date":"10日星期一","high":"高温 7℃","fengli":"<![CDATA[<3级]]>","low":"低温 2℃","fengxiang":"无持续风向","type":"阴"},{"date":"11日星期二","high":"高温 11℃","fengli":"<![CDATA[<3级]]>","low":"低温 3℃","fengxiang":"无持续风向","type":"多云"}]
-         * ganmao : 昼夜温差很大，易发生感冒，请注意适当增减衣服，加强自我防护避免感冒。
-         * wendu : 6
+         * title : 古风二首 二
+         * content : 锄禾日当午，汗滴禾下土。|谁知盘中餐，粒粒皆辛苦。
+         * authors : 李绅
          */
 
-        private YesterdayBean yesterday;
-        private String city;
-        private String aqi;
-        private String ganmao;
-        private String wendu;
-        private List<ForecastBean> forecast;
+        private String title;
+        private String content;
+        private String authors;
 
-        public YesterdayBean getYesterday() {
-            return yesterday;
+        public String getTitle() {
+            return title;
         }
 
-        public void setYesterday(YesterdayBean yesterday) {
-            this.yesterday = yesterday;
+        public void setTitle(String title) {
+            this.title = title;
         }
 
-        public String getCity() {
-            return city;
+        public String getContent() {
+            return content;
         }
 
-        public void setCity(String city) {
-            this.city = city;
+        public void setContent(String content) {
+            this.content = content;
         }
 
-        public String getAqi() {
-            return aqi;
+        public String getAuthors() {
+            return authors;
         }
 
-        public void setAqi(String aqi) {
-            this.aqi = aqi;
-        }
-
-        public String getGanmao() {
-            return ganmao;
-        }
-
-        public void setGanmao(String ganmao) {
-            this.ganmao = ganmao;
-        }
-
-        public String getWendu() {
-            return wendu;
-        }
-
-        public void setWendu(String wendu) {
-            this.wendu = wendu;
-        }
-
-        public List<ForecastBean> getForecast() {
-            return forecast;
-        }
-
-        public void setForecast(List<ForecastBean> forecast) {
-            this.forecast = forecast;
-        }
-
-        public static class YesterdayBean {
-            /**
-             * date : 6日星期四
-             * high : 高温 10℃
-             * fx : 无持续风向
-             * low : 低温 4℃
-             * fl : <![CDATA[<3级]]>
-             * type : 阴
-             */
-
-            private String date;
-            private String high;
-            private String fx;
-            private String low;
-            private String fl;
-            private String type;
-
-            public String getDate() {
-                return date;
-            }
-
-            public void setDate(String date) {
-                this.date = date;
-            }
-
-            public String getHigh() {
-                return high;
-            }
-
-            public void setHigh(String high) {
-                this.high = high;
-            }
-
-            public String getFx() {
-                return fx;
-            }
-
-            public void setFx(String fx) {
-                this.fx = fx;
-            }
-
-            public String getLow() {
-                return low;
-            }
-
-            public void setLow(String low) {
-                this.low = low;
-            }
-
-            public String getFl() {
-                return fl;
-            }
-
-            public void setFl(String fl) {
-                this.fl = fl;
-            }
-
-            public String getType() {
-                return type;
-            }
-
-            public void setType(String type) {
-                this.type = type;
-            }
-        }
-
-        public static class ForecastBean {
-            /**
-             * date : 7日星期五
-             * high : 高温 5℃
-             * fengli : <![CDATA[<3级]]>
-             * low : 低温 2℃
-             * fengxiang : 无持续风向
-             * type : 小雨
-             */
-
-            private String date;
-            private String high;
-            private String fengli;
-            private String low;
-            private String fengxiang;
-            private String type;
-
-            public String getDate() {
-                return date;
-            }
-
-            public void setDate(String date) {
-                this.date = date;
-            }
-
-            public String getHigh() {
-                return high;
-            }
-
-            public void setHigh(String high) {
-                this.high = high;
-            }
-
-            public String getFengli() {
-                return fengli;
-            }
-
-            public void setFengli(String fengli) {
-                this.fengli = fengli;
-            }
-
-            public String getLow() {
-                return low;
-            }
-
-            public void setLow(String low) {
-                this.low = low;
-            }
-
-            public String getFengxiang() {
-                return fengxiang;
-            }
-
-            public void setFengxiang(String fengxiang) {
-                this.fengxiang = fengxiang;
-            }
-
-            public String getType() {
-                return type;
-            }
-
-            public void setType(String type) {
-                this.type = type;
-            }
+        public void setAuthors(String authors) {
+            this.authors = authors;
         }
     }
 }

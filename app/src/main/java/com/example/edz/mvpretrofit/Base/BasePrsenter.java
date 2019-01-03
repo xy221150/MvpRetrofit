@@ -6,29 +6,30 @@ import com.example.edz.mvpretrofit.Network.RetrofitCallBack;
 
 //V继承BaseView T接口bean
 public class BasePrsenter<V extends BaseView,T>implements RetrofitCallBack<T> {
-    BaseView baseView=null;
+    V view;
 
-    public BasePrsenter(V baseView){
-        this.baseView=baseView;
+    public void attrchView(V view){
+        this.view=view;
     }
 
     @Override
     public void beforeRequest() {
-        baseView.showProgress();
+        view.showProgress();
     }
 
     @Override
     public void requstSuccess(T success) {
-        baseView.loadDataSuccess(success);
+        view.loadDataSuccess(success);
     }
 
     @Override
     public void requstErorr(Throwable throwable) {
-           baseView.loadDataError(throwable);
+        view.loadDataError(throwable);
+        view.disimissProgress();
     }
 
     @Override
     public void requestComplete() {
-          baseView.disimissProgress();
+        view.disimissProgress();
     }
 }
