@@ -32,7 +32,7 @@ public class TestModel implements IModel.BaseModel<TestBean> {
 
                      @Override
                      public void onNext(TestBean testBean) {
-                          callBack.requstSuccess(testBean);
+                         callBack.requstSuccess(testBean);
                          Log.d("TAG", "onNext: "+testBean.getMessage());
                      }
 
