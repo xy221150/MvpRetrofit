@@ -1,7 +1,9 @@
 package com.example.edz.mvpretrofit.Utils;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 
 public class DialogUtils {
     private static  ProgressDialog progressDialog;
@@ -51,8 +53,24 @@ public class DialogUtils {
     }
 
 
-    public static void showProgressDialog(){
+    private static AlertDialog.Builder builder(Context context){
+        return new AlertDialog.Builder(context);
+    }
+    public static void showAlertDialog(Context context,String title,String msg,String pbStr,DialogInterface.OnClickListener pbdo){
+        builder(context).setMessage(msg)
+                .setTitle(title)
+                .setPositiveButton(pbStr,pbdo)
+                .setCancelable(false)
+                .show();
+    }
 
+    public static void showAlertDialog(Context context,String title,String msg,String pbStr,DialogInterface.OnClickListener pbdo,String nbStr,DialogInterface.OnClickListener nbdo){
+        builder(context).setMessage(msg)
+                .setTitle(title)
+                .setPositiveButton(pbStr,pbdo)
+                .setNegativeButton(nbStr,nbdo)
+                .setCancelable(false)
+                .show();
     }
 
     public static void DismssProgressDialog(){
