@@ -32,4 +32,10 @@ public class BasePrsenter<V extends BaseView,T>implements RetrofitCallBack<T> {
     public void requestComplete() {
         view.disimissProgress();
     }
+
+    public void onDestroy(){
+        if (view!=null)
+            view=null;
+
+    }
 }

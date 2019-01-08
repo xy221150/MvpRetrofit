@@ -9,54 +9,57 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.edz.mvpretrofit.Base.BaseMvpActivity;
 import com.example.edz.mvpretrofit.Bean.TestBean;
+import com.example.edz.mvpretrofit.Mvp.Presenter.IPresenter;
 import com.example.edz.mvpretrofit.Mvp.Presenter.TestPresenter;
 import com.example.edz.mvpretrofit.Mvp.View.TestView;
 import com.example.edz.mvpretrofit.R;
+import com.example.edz.mvpretrofit.Utils.DialogUtils;
 
-public class MainActivity extends AppCompatActivity implements TestView {
+public class MainActivity extends BaseMvpActivity<TestPresenter,TestBean> implements TestView {
     Button button;
     TextView text;
-    ProgressDialog progressDialog;
-    private TestPresenter presenter;
+
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+    protected int getLayoutID() {
+        return R.layout.activity_main;
+    }
+
+    @Override
+    protected void initView() {
+        super.initView();
         button=findViewById(R.id.button);
         text=findViewById(R.id.text);
-        presenter=new TestPresenter(this);
+    }
+
+    @Override
+    protected TestPresenter initPrsenter() {
+        return new TestPresenter(this);
+    }
+
+    @Override
+    protected void attrPrsenter(final TestPresenter prsenter) {
+        super.attrPrsenter(prsenter);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.loadData("杭州");
+                prsenter.loadData("杭州");
             }
         });
     }
 
 
+
     @Override
     public void showProgress() {
-        if (progressDialog==null)
-        {
-            progressDialog=new ProgressDialog(this).show(this,"","正在加载",true,false);
-            return;
-        }
-        else
-        {
-            progressDialog.setTitle("");
-            progressDialog.setMessage("正在加载");
-            progressDialog.show();
-            return;
-        }
+        DialogUtils.showProgressDialog(this);
     }
 
     @Override
     public void disimissProgress() {
-        if (progressDialog!=null&&progressDialog.isShowing())
-            progressDialog.dismiss();
-
-        Toast.makeText(this, "加载完成", Toast.LENGTH_SHORT).show();
+        DialogUtils.DismssProgressDialog();
+        showToast("加载完成");
     }
 
     @Override
@@ -68,4 +71,5 @@ public class MainActivity extends AppCompatActivity implements TestView {
     public void loadDataError(Throwable throwable) {
         Toast.makeText(this, throwable.getMessage(), Toast.LENGTH_SHORT).show();
     }
+
 }
