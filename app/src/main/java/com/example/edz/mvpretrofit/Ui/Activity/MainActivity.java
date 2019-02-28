@@ -44,19 +44,6 @@ public class MainActivity extends BaseMvpActivity<TestPresenter,TestBean> implem
         });
     }
 
-
-
-    @Override
-    public void showProgress() {
-        DialogUtils.showProgressDialog(this);
-    }
-
-    @Override
-    public void disimissProgress() {
-        DialogUtils.DismssProgressDialog();
-        showToast("加载完成");
-    }
-
     @Override
     public void loadDataSuccess(TestBean data) {
         text.setText(data.getResult().get(0).getTitle());

@@ -11,6 +11,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.example.edz.mvpretrofit.Utils.DialogUtils;
+
 public abstract class BaseMvpFragment<P extends BasePrsenter,T> extends Fragment implements BaseView {
     private View view;
     private P prsenter;
@@ -57,12 +59,13 @@ public abstract class BaseMvpFragment<P extends BasePrsenter,T> extends Fragment
     }
     @Override
     public void showProgress() {
-
+        DialogUtils.showProgressDialog(getActivity());
     }
 
     @Override
     public void disimissProgress() {
-
+        DialogUtils.DismssProgressDialog();
+        showToast("加载完成");
     }
 
     @Override

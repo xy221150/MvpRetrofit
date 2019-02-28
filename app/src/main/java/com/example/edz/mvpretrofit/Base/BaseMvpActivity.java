@@ -7,6 +7,8 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
+import com.example.edz.mvpretrofit.Utils.DialogUtils;
+
 public abstract class BaseMvpActivity<P extends BasePrsenter,T> extends AppCompatActivity implements BaseView<T> {
     P prsenter;
     @Override
@@ -52,12 +54,13 @@ public abstract class BaseMvpActivity<P extends BasePrsenter,T> extends AppCompa
     }
     @Override
     public void showProgress() {
-
+        DialogUtils.showProgressDialog(this);
     }
 
     @Override
     public void disimissProgress() {
-
+        DialogUtils.DismssProgressDialog();
+        showToast("加载完成");
     }
 
     @Override
